@@ -1,0 +1,60 @@
+============================= test session starts ==============================
+platform linux -- Python 3.9.15, pytest-7.2.0, pluggy-1.0.0
+rootdir: /workspace
+collected 8 items
+tests/test_a_environment.py ..                                           [ 25%]
+tests/test_a_setup.py .                                                  [ 37%]
+tests/test_bandit.py FF                                                  [ 62%]
+tests/test_q_learning.py FFF                                             [100%]
+=================================== FAILURES ===================================
+______________________________ test_bandit_slots _______________________________
+>       state_action_values, rewards = agent.fit(env, steps=10000, num_bins=100)
+tests/test_bandit.py:19:
+>       raise NotImplementedError
+E       NotImplementedError
+src/multi_armed_bandit.py:85: NotImplementedError
+___________________________ test_bandit_frozen_lake ____________________________
+>       env.seed(0)
+tests/test_bandit.py:46:
+>       return getattr(self.env, name)
+E       AttributeError: 'FrozenLakeEnv' object has no attribute 'seed'
+/usr/local/lib/python3.9/site-packages/gym/core.py:241: AttributeError
+____________________________ test_q_learning_slots _____________________________
+>       state_action_values, rewards = agent.fit(env, steps=1000)
+tests/test_q_learning.py:19:
+>       raise NotImplementedError
+E       NotImplementedError
+src/q_learning.py:94: NotImplementedError
+_________________________ test_q_learning_frozen_lake __________________________
+>       env.seed(0)
+tests/test_q_learning.py:42:
+>       return getattr(self.env, name)
+E       AttributeError: 'FrozenLakeEnv' object has no attribute 'seed'
+/usr/local/lib/python3.9/site-packages/gym/core.py:241: AttributeError
+________________________ test_q_learning_deterministic _________________________
+>       states, actions, rewards = agent.predict(env, state_action_values)
+tests/test_q_learning.py:87:
+>       raise NotImplementedError
+E       NotImplementedError
+src/q_learning.py:144: NotImplementedError
+=============================== warnings summary ===============================
+tests/test_bandit.py::test_bandit_slots
+tests/test_q_learning.py::test_q_learning_slots
+  /usr/local/lib/python3.9/site-packages/gym/utils/passive_env_checker.py:174: UserWarning: [33mWARN: Future gym versions will require that `Env.reset` can be passed a `seed` instead of using `Env.seed` for resetting the environment random number generator.[0m
+    logger.warn(
+tests/test_bandit.py::test_bandit_slots
+tests/test_q_learning.py::test_q_learning_slots
+  /usr/local/lib/python3.9/site-packages/gym/utils/passive_env_checker.py:187: UserWarning: [33mWARN: Future gym versions will require that `Env.reset` can be passed `options` to allow the environment initialisation to be passed additional information.[0m
+    logger.warn(
+tests/test_bandit.py::test_bandit_slots
+tests/test_q_learning.py::test_q_learning_slots
+  /usr/local/lib/python3.9/site-packages/gym/utils/passive_env_checker.py:195: UserWarning: [33mWARN: The result returned by `env.reset()` was not a tuple of the form `(obs, info)`, where `obs` is a observation and `info` is a dictionary containing additional information. Actual type: `<class 'int'>`[0m
+    logger.warn(
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_bandit.py::test_bandit_slots - NotImplementedError
+FAILED tests/test_bandit.py::test_bandit_frozen_lake - AttributeError: 'Froze...
+FAILED tests/test_q_learning.py::test_q_learning_slots - NotImplementedError
+FAILED tests/test_q_learning.py::test_q_learning_frozen_lake - AttributeError...
+FAILED tests/test_q_learning.py::test_q_learning_deterministic - NotImplement...
+=================== 5 failed, 3 passed, 6 warnings in 0.63s ====================
